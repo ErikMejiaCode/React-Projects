@@ -8,6 +8,35 @@ import GeneralContacts from "./GeneralContacts";
 import Footer from "../Layout/Footer";
 
 class ContactIndex extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      contactList: [
+        {
+          id: 1,
+          name: "Erik Mejia",
+          phone: "999-999-9999",
+          email: "erik@dotmastery.com",
+          isFavorite: false,
+        },
+        {
+          id: 1,
+          name: "Jair Mejia",
+          phone: "888-888-8888",
+          email: "jair@dotmastery.com",
+          isFavorite: true,
+        },
+        {
+          id: 1,
+          name: "Sito Mejia",
+          phone: "7777-777-777",
+          email: "sito@dotmastery.com",
+          isFavorite: true,
+        },
+      ],
+    };
+  }
+
   render() {
     return (
       <div>
@@ -24,10 +53,18 @@ class ContactIndex extends React.Component {
               <AddContact />
             </div>
             <div className="row py-2">
-              <FavoriteContacts />
+              <FavoriteContacts
+                contacts={this.state.contactList.filter(
+                  (u) => u.isFavorite === true
+                )}
+              />
             </div>
             <div className="row py-2">
-              <GeneralContacts />
+              <GeneralContacts
+                contacts={this.state.contactList.filter(
+                  (u) => u.isFavorite === false
+                )}
+              />
             </div>
           </div>
         </div>
