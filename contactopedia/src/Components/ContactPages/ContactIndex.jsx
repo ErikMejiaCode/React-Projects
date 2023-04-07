@@ -20,14 +20,14 @@ class ContactIndex extends React.Component {
           isFavorite: false,
         },
         {
-          id: 1,
+          id: 2,
           name: "Jair Mejia",
           phone: "888-888-8888",
           email: "jair@dotmastery.com",
           isFavorite: true,
         },
         {
-          id: 1,
+          id: 3,
           name: "Sito Mejia",
           phone: "7777-777-777",
           email: "sito@dotmastery.com",
@@ -38,6 +38,7 @@ class ContactIndex extends React.Component {
   }
 
   handleAddContact = (newContact) => {
+    //Logic for Form Validations
     if (newContact.name === "") {
       return {
         status: "failure",
@@ -49,9 +50,8 @@ class ContactIndex extends React.Component {
         msg: "Please enter a valid Phone Number",
       };
     }
-
     const duplicateRecord = this.state.contactList.filter((x) => {
-      if (x.name === newContact.name || x.phone === newContact.phone) {
+      if (x.name === newContact.name && x.phone === newContact.phone) {
         return true;
       }
     });
@@ -73,6 +73,20 @@ class ContactIndex extends React.Component {
       });
       return { status: "success", msg: "Contact was added successfully" };
     }
+  };
+
+  handleToggleFavorite = (contact) => {
+    console.log(contact);
+    this.setState((prevState) => {
+      return {
+        contactList: prevState.contactList.map((obj) => {
+          if (obj.id === contact.id) {
+            return { ...obj, isFavorite: !obj.isFavorite };
+          }
+          return obj;
+        }),
+      };
+    });
   };
 
   render() {
@@ -98,6 +112,7 @@ class ContactIndex extends React.Component {
                   contacts={this.state.contactList.filter(
                     (u) => u.isFavorite === true
                   )}
+                  favoriteClick={this.handleToggleFavorite}
                 />
               </div>
             </div>
@@ -107,6 +122,7 @@ class ContactIndex extends React.Component {
                   contacts={this.state.contactList.filter(
                     (u) => u.isFavorite === false
                   )}
+                  favoriteClick={this.handleToggleFavorite}
                 />
               </div>
             </div>
