@@ -50,6 +50,7 @@ class ContactIndex extends React.Component {
         msg: "Please enter a valid Phone Number",
       };
     }
+    // eslint-disable-next-line array-callback-return
     const duplicateRecord = this.state.contactList.filter((x) => {
       if (x.name === newContact.name && x.phone === newContact.phone) {
         return true;
@@ -99,16 +100,31 @@ class ContactIndex extends React.Component {
     });
   };
 
+  handleAddRandomContact = (newContact) => {
+    const newFinalContact = {
+      ...newContact,
+      id: this.state.contactList[this.state.contactList.length - 1].id + 1,
+      isFavorite: false,
+    };
+    this.setState((prevState) => {
+      return {
+        contactList: prevState.contactList.concat([newFinalContact]),
+      };
+    });
+  };
+
   render() {
     return (
       <div>
         <Header />
         <div className="container" style={{ minHeight: "85vh" }}>
           <div className="row py-3">
-            <div className="col-4 offset-2">
-              <AddRandomContact />
+            <div className="col-4 offset-2 row">
+              <AddRandomContact
+                handleAddRandomContact={this.handleAddRandomContact}
+              />
             </div>
-            <div className="col-4">
+            <div className="col-4 row">
               <RemoveAllContacts />
             </div>
             <div className="row py-2">
