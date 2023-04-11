@@ -32,7 +32,10 @@ const Contact = (props) => {
         </button>
       </div>
       <div className="col-2 col-md-3 pt-md-3">
-        <button className="btn btn-primary btn-sm m-1">
+        <button
+          onClick={() => props.updateClick(props.contact)}
+          className="btn btn-primary btn-sm m-1"
+        >
           <i className="bi bi-pencil-square" style={{ fontSize: "1rem" }}></i>
         </button>
         <button
