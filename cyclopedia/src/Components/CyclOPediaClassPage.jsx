@@ -1,5 +1,6 @@
 import React from "react";
 import { getRandomUser } from "../Utilities/api";
+import Instructor from "./Instructor";
 
 class CyclOPediaClassPage extends React.Component {
   constructor(props) {
@@ -58,22 +59,31 @@ class CyclOPediaClassPage extends React.Component {
     });
   };
 
+  handletoggleInstructor = () => {
+    this.setState((prevState) => {
+      return {
+        hideInstructor: !prevState.hideInstructor,
+      };
+    });
+  };
+
   render() {
     console.log("Render Component");
     return (
       <div>
-        {this.state.instructor && (
-          <div className="p-3">
-            <span className="h4 text-success">Instructor</span>
-            <i className="bi bi-toggle-off btn btn-success btn-sm"></i>
-            <br />
-            Name : {this.state.instructor.name}
-            <br />
-            Email : {this.state.instructor.email}
-            <br />
-            Phone : {this.state.instructor.phone}
-          </div>
-        )}
+        <div className="p-3">
+          <span className="h4 text-success">Instructor </span>
+          <i
+            className={`bi ${
+              this.state.hideInstructor ? "bi-toggle-off" : "bi-toggle-on"
+            }  btn btn-success btn-sm`}
+            onClick={this.handletoggleInstructor}
+          ></i>
+          {!this.state.hideInstructor ? (
+            <Instructor instructor={this.state.instructor} />
+          ) : null}
+        </div>
+
         <div className="p-3">
           <span className="h4 text-success">Feedback</span>
           <br />
