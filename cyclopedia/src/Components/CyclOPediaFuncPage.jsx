@@ -41,8 +41,10 @@ const CyclOPediaFuncPage = () => {
         };
       });
     };
-    getUser();
-  }, []);
+    if (!state.hideInstructor) {
+      getUser();
+    }
+  }, [state.hideInstructor]);
 
   useEffect(() => {
     console.log("This will be called whenever value of hideInstructor changes");
@@ -54,37 +56,6 @@ const CyclOPediaFuncPage = () => {
       console.log("This will be called on when component will be UNMOUNTED");
     };
   }, []);
-
-  // constructor(props) {
-  //   super(props);
-  //   this.state = JSON.parse(localStorage.getItem("cyclopediastate")) || {
-  //     instructor: undefined,
-  //     studentList: [],
-  //     studentCount: 0,
-  //     hideInstructor: false,
-  //     inputName: "",
-  //     inputFeedback: "",
-  //   };
-  // }
-
-  // componentDidMount = async () => {
-  //   console.log("Component did Mount");
-  //   if (JSON.parse(localStorage.getItem("cyclopediastate"))) {
-  //     //this.setState(JSON.parse(localStorage.getItem("cyclopediastate")));
-  //   } else {
-  //     const response = await getRandomUser();
-  //     console.log(response);
-  //     this.setState((prevState) => {
-  //       return {
-  //         instructor: {
-  //           name: response.data.first_name + " " + response.data.last_name,
-  //           email: response.data.email,
-  //           phone: response.data.phone_number,
-  //         },
-  //       };
-  //     });
-  //   }
-  // };
 
   // componentDidUpdate = async (previousProps, previousState) => {
   //   console.log("Component did Update");
