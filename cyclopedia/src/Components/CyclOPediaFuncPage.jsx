@@ -24,6 +24,7 @@ const CyclOPediaFuncPage = () => {
     console.log("This will be called on EVERY Render");
   });
 
+  //Used to grab an instructor
   useEffect(() => {
     console.log("This will be called on Initial/first Render/Mount");
 
@@ -45,6 +46,33 @@ const CyclOPediaFuncPage = () => {
       getUser();
     }
   }, [state.hideInstructor]);
+
+  //Used to populate the students as the count increases
+  useEffect(() => {
+    const getUser = async () => {
+      const response = await getRandomUser();
+      console.log(response);
+      setState((prevState) => {
+        return {
+          ...prevState,
+          studentList: [
+            ...prevState.studentList,
+            { name: response.data.first_name + " " + response.data.last_name },
+          ],
+        };
+      });
+    };
+    if (state.studentList.length < state.studentCount) {
+      getUser();
+    } else if (state.studentList.length > state.studentCount) {
+      setState((prevState) => {
+        return {
+          ...prevState,
+          studentList: [],
+        };
+      });
+    }
+  }, [state.studentCount]);
 
   useEffect(() => {
     console.log("This will be called whenever value of hideInstructor changes");
