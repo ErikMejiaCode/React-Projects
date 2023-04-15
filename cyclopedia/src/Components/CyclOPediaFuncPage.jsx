@@ -16,6 +16,8 @@ const CyclOPediaFuncPage = () => {
   //State used to keep track of how many times a component has rendered
   //const [totalRender, setTotalRender] = useState(0)
   const totalRender = useRef(0);
+  const prevStudentCount = useRef(0);
+  const feedbackInputRef = useRef(null);
 
   const [inputName, setInputName] = useState(() => {
     return "";
@@ -28,8 +30,7 @@ const CyclOPediaFuncPage = () => {
     // console.log("This will be called on EVERY Render");
     // setTotalRender((prevState) => prevState+1)
     totalRender.current = totalRender.current + 1;
-    console.log("Render: " + totalRender.current);
-  });
+  }, [state.studentCount]);
 
   //Used to grab an instructor
   useEffect(() => {
@@ -69,9 +70,9 @@ const CyclOPediaFuncPage = () => {
         };
       });
     };
-    if (state.studentList.length < state.studentCount) {
+    if (prevStudentCount.current < state.studentCount) {
       getUser();
-    } else if (state.studentList.length > state.studentCount) {
+    } else if (prevStudentCount.current > state.studentCount) {
       setState((prevState) => {
         return {
           ...prevState,
@@ -81,16 +82,22 @@ const CyclOPediaFuncPage = () => {
     }
   }, [state.studentCount]);
 
+  useEffect(() => {
+    prevStudentCount.current = state.studentCount;
+    console.log("Render: " + totalRender.current);
+  });
+
   // useEffect(() => {
   //   console.log("This will be called whenever value of hideInstructor changes");
   // }, [inputFeedback, inputName]);
 
-  // useEffect(() => {
-  //   console.log("This will be called on Initial/first Render/Mount");
-  //   return () => {
-  //     console.log("This will be called on when component will be UNMOUNTED");
-  //   };
-  // }, []);
+  useEffect(() => {
+    feedbackInputRef.current.focus();
+    // console.log("This will be called on Initial/first Render/Mount");
+    return () => {
+      // console.log("This will be called on when component will be UNMOUNTED");
+    };
+  }, []);
 
   // componentDidUpdate = async (previousProps, previousState) => {
   //   console.log("Component did Update");
@@ -182,6 +189,7 @@ const CyclOPediaFuncPage = () => {
         <br />
         <textarea
           value={inputFeedback}
+          ref={feedbackInputRef}
           placeholder="Feedback..."
           onChange={(e) => {
             setInputFeedback(e.target.value);
