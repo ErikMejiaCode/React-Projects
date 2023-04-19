@@ -8,7 +8,7 @@ import About from "./About";
 import Product from "./Pages/Product.jsx";
 import CreateProduct from "./Pages/CreateProduct.jsx";
 import ProductDetails from "./Pages/ProductDetails.jsx";
-import ProductList from "./Pages/Product.jsx";
+import ProductList from "./Pages/ProductList";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -20,11 +20,13 @@ root.render(
         // Basic navigation routes
         <Route path="/" element={<Home />}></Route>
         <Route path="/about" element={<About />}></Route>
-        // Product navigation
-        <Route path="/product" element={<Product />}></Route>
-        <Route path="/createproduct" element={<CreateProduct />}></Route>
-        <Route path="/productdetails" element={<ProductDetails />}></Route>
-        <Route path="/productlist" element={<ProductList />}></Route>
+        // Product navigation - Nested Routes
+        <Route path="product">
+          <Route path="" element={<Product />}></Route>
+          <Route path="create" element={<CreateProduct />}></Route>
+          <Route path="details" element={<ProductDetails />}></Route>
+          <Route path="list" element={<ProductList />}></Route>
+        </Route>
       </Routes>
     </BrowserRouter>
   </div>

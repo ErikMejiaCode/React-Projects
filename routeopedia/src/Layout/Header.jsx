@@ -55,17 +55,17 @@ function Header() {
                     </Link>
                   </li>
                   <li>
-                    <Link className="dropdown-item" to="/createproduct">
-                      Create Product
+                    <Link className="dropdown-item" to="/product/create">
+                      Product Create
                     </Link>
                   </li>
                   <li>
-                    <Link className="dropdown-item" to="/productdetails">
+                    <Link className="dropdown-item" to="/product/details">
                       Product Details
                     </Link>
                   </li>
                   <li>
-                    <Link className="dropdown-item" to="/productlist">
+                    <Link className="dropdown-item" to="/product/list">
                       Product list
                     </Link>
                   </li>
