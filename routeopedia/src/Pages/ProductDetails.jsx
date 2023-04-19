@@ -2,11 +2,11 @@ import React from "react";
 import { useParams } from "react-router-dom";
 
 function ProductDetails() {
-  const { id } = useParams();
+  const { productId } = useParams();
 
   return (
     <div>
-      <h4>Product ID: {id}</h4>
+      <h4>Product ID: {productId}</h4>
     </div>
   );
 }
