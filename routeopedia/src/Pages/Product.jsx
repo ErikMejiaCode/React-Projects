@@ -9,7 +9,7 @@ function Product() {
 
   return (
     <div>
-      // Routing using useNavigate Product
+      //Routing using useNavigate Product
       <br />
       <button
         onClick={() => {
@@ -18,11 +18,11 @@ function Product() {
       >
         Add Product
       </button>
-      // Routing using Link
+      //Routing using Link
       <Link to={`/product/details/5`}>
         <button>Navigate to Product Detail - 5</button>
       </Link>
-      // Routing using Navigate & UseState
+      //Routing using Navigate & UseState
       {goToProduct && <Navigate to="/product/details/3" />}
       <button
         onClick={() => {
