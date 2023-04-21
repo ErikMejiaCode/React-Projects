@@ -3,9 +3,9 @@ import { counterReducer } from "./slice/counterSlice";
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    counterStore: counterReducer,
     //We will fill reducer later
   },
 });
 
-console.log(store);
+console.log(store.getState());
