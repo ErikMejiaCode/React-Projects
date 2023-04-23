@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { destinationClicked } from "../../redux/slice/destinationSlice";
+import { destinationClicked } from "../../redux/store";
 
 import React from "react";
 

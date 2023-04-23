@@ -1,7 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { resetDestination } from "../../redux/slice/destinationSlice";
-import { resetReduxOPedia } from "../../redux/action/actions";
+import { resetReduxOPedia } from "../../redux/store";
 
 function ResetApp() {
   const dispatch = useDispatch();
