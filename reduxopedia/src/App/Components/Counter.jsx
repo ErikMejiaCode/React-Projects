@@ -1,10 +1,17 @@
 import React from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { increment, decrement } from "../../redux/slice/counterSlice";
+import {
+  increment,
+  decrement,
+  incrementMultiplier,
+  decrementMultiplier,
+} from "../../redux/slice/counterSlice";
 
 function Counter() {
   const count = useSelector((state) => state.counterStore.count);
   const dispatch = useDispatch();
+  const [multiplier, setMultiplier] = useState(10);
 
   return (
     <div
@@ -40,12 +47,14 @@ function Counter() {
                   type="text"
                   placeholder="Multiplier..."
                   className="form-control"
+                  value={multiplier}
+                  onChange={(e) => setMultiplier(e.target.value)}
                 />
               </div>
               <div className="col-4 p-1">
                 <button
                   className="btn btn-primary form-control"
-                  onClick={() => dispatch(increment())}
+                  onClick={() => dispatch(incrementMultiplier(multiplier))}
                 >
                   Add
                 </button>
@@ -53,7 +62,7 @@ function Counter() {
               <div className="col-4 p-1">
                 <button
                   className="btn btn-danger form-control"
-                  onClick={() => dispatch(decrement())}
+                  onClick={() => dispatch(decrementMultiplier(multiplier))}
                 >
                   Remove
                 </button>
