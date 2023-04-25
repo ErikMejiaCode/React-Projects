@@ -11,6 +11,24 @@
       "city": "Chicago",
       "country": "USA",
       "daysNeeded": 5
+    },
+    {
+      "id": 94.4279070166077,
+      "city": "test",
+      "country": "count",
+      "daysNeeded": 7
+    },
+    {
+      "id": 36.37516819881734,
+      "city": "test1",
+      "country": "count1",
+      "daysNeeded": 9
+    },
+    {
+      "id": 57.81858521078489,
+      "city": "test2after tags",
+      "country": "Tags",
+      "daysNeeded": 10
     }
   ]
 }
