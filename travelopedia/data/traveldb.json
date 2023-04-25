@@ -1,22 +1,16 @@
 {
   "destination": [
     {
-      "id": 1,
-      "city": "Florida",
+      "id": 2.8328568165005175,
+      "city": "Los Angeles",
       "country": "USA",
-      "daysNeeded": 3
+      "daysNeeded": 2
     },
     {
-      "id": 2,
-      "city": "Chicago",
-      "country": "USA",
-      "daysNeeded": 5
-    },
-    {
-      "id": 26.136906084560874,
+      "id": 36.705448171777924,
       "city": "Tokyo",
       "country": "Japan",
-      "daysNeeded": 5
+      "daysNeeded": 10
     }
   ]
 }
